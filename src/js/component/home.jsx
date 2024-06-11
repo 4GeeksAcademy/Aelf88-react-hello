@@ -11,7 +11,7 @@ const Home = () => {
         setNewestTodo("");
     }
     const deleteTask = (index) => {
-        const newList = todos.filter((todo,i) => i !== index)
+        const newList = todos.filter((todo, i) => i !== index)
         console.log(index)
         setTodos(newList)
     }
@@ -21,18 +21,22 @@ const Home = () => {
     return (
         <div className="text-center">
             <h1 className="text-center mt-5">To-do List with Fetch!</h1>
-            <input type="text" value={newTodo} onChange={handleChange} />
-            <button onClick={handleClick}>
-                Add task
-            </button>
-            <p>New task: {newTodo}</p>
-            <ul>
-                {todos.map((todo, index) => (
-                    <li key={index}>
-                        {todo} <button onClick={() => deleteTask(index)} >Delete</button>
-                    </li>
-                ))}
-            </ul>
+            <div className="container">
+                <div className="d-flex gap-2">
+                    <input type="text" className="form-control " value={newTodo} onChange={handleChange} />
+                    <button className="btn btn-primary"onClick={handleClick}>
+                        Add task
+                    </button>
+                </div>
+                <p>New task: {newTodo}</p>
+                <ul> 
+                    {todos.map((todo, index) => (
+                        <li className="list-group-item d-flex justify-content-between .bg-secondary"key={index}>
+                            {todo} <button className="btn btn-danger " onClick={() => deleteTask(index)} >Delete</button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
